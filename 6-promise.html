@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  let rightImg =
+  'http://pics1.baidu.com/feed/4610b912c8fcc3ce73d5c5b74c7fd58fd53f20da.jpeg?token=e3af60a040a3c62804bc769d6e0245f5'
+  let defaultImg =
+    'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201307%2F23%2F20130723121038_WxiVJ.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627446995&t=38f026468d576476a16906ab32932078'
+
+  function getImg(imgSrc) {
+    return new Promise((resolve, reject) => {
+      var img = new Image()
+      img.src = imgSrc
+      document.body.appendChild(img)
+      img.onload = function () {
+        resolve(img)
+      }
+      img.onerror = function () {
+        reject(img)
+        // 
+      }
+    })
+  }
+  getImg(rightImg).then(res => {
+    console.log(res)
+  }).catch(err => {
+    console.log(err)
+  })
+</script>
+
+</html>

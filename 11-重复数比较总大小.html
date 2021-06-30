@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /*
+  一个数组[1,2,2,3,4,5]每一个沒有重复的数组为一个数组，比较总大小：[1,2],[2,3,4,5]所以大小为2+3+4+5 = 14，写出代码实现此功能
+  */
+  function getResult(arr) {
+    let obj = {}
+    let numArr = []
+    let num = 0
+    for (let i = 0; i <= arr.length; i++) {
+      if (obj[arr[i]] !== undefined || arr.length === i) {
+        numArr.push(num)
+        obj = {}
+        num = 0
+        obj[arr[i]] = arr[i]
+        num += arr[i]
+      } else if (arr.length !== i) {
+        obj[arr[i]] = arr[i]
+        num += arr[i]
+      }
+
+    }
+    console.log(numArr)
+  }
+  getResult([1, 2, 2, 3, 4, 5, 5, 5, 5, 5])
+</script>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="dragedDiv"></div>
+  <div id="dragedDiv2"></div>
+</body>
+<script>
+  function throttle(callback, delay) {
+  let pre = 0
+  return function (event) { // return的是handleClick事件 event为点击事件的参数 this为触发事件的button
+    let current = Date.now()
+    if (current - pre > delay) {
+      callback.call(this, event)
+      pre = current
+    }
+  }
+}
+  function Drag(ele) {
+    this.ele = ele
+    this.downFn()
+  }
+  Drag.prototype.downFn = function () {
+    this.ele.onmousedown = e => {
+      let event = e || window.event
+      let x = event.clientX - this.ele.offsetLeft
+      let y = event.clientY - this.ele.offsetTop
+      this.moveFn(x,y)
+      this.upFn()
+    }
+  }
+  Drag.prototype.moveFn = function (x,y) {
+    this.ele.onmousemove = e => {
+      let event = e || window.event
+      let xx = event.clientX
+      let yy = event.clientY
+      this.setStyle(xx,x,yy,y)
+    }
+  }
+  Drag.prototype.setStyle = function (xx,x,yy,y) {
+    this.ele.style.left = xx - x + 'px'
+    this.ele.style.top = yy - y + 'px'
+  }
+  Drag.prototype.upFn = function () {
+    this.ele.onmouseup = e => {
+      let event = e || window.event
+      this.ele.onmousemove = null;
+    }
+  }
+  let dragedDiv = document.querySelector('#dragedDiv')
+  new Drag(dragedDiv)
+  // dragedDiv.onmousedown = e =>{
+  //   let event = e || window.event
+  //   let x = event.clientX - dragedDiv.offsetLeft
+  //   let y = event.clientY - dragedDiv.offsetTop
+  //   dragedDiv.onmousemove = e =>{
+  //     let event = e || window.event
+  //     let xx = event.clientX
+  //     let yy = event.clientY
+  //     dragedDiv.style.left = xx - x +'px'
+  //     dragedDiv.style.top = yy - y +'px'
+  //   }
+  //   dragedDiv.onmouseup = e =>{
+  //     let event = e || window.event
+  //     dragedDiv.onmousemove = null;
+  //   }
+  // }
+</script>
+<style>
+  #dragedDiv {
+    width: 100px;
+    height: 100px;
+    border: 1px red solid;
+    background-color: red;
+    position: absolute;
+    cursor: pointer
+  }
+  #dragedDiv2 {
+    width: 100px;
+    height: 100px;
+    border: 1px red solid;
+    background-color: lightblue;
+    left:300px;
+    position: absolute;
+    cursor: pointer
+  }
+</style>
+
+</html>

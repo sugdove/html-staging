@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  (function (window) {
+    function Promise(excutor) {
+      const PENDDING = 'pendding'
+      const FULFILLED = 'fulfilled'
+      const REJECTED = 'rejected'
+      this.status = PENDDING
+      this.value = undefined
+      this.callbacks = []
+
+      resolve = (value) => {
+        if (this.status !== PENDDING) return
+        this.status = FULFILLED
+        this.value = value
+        this.callbacks.forEach(item => {
+          item.onFulfilled(value)
+        })
+      }
+
+      reject = (reason) => {
+        if (this.status !== PENDDING) return
+        this.status = REJECTED
+        this.value = reason
+        this.callbacks.forEach(item => {
+          item.onRejected(reason)
+        })
+      }
+
+      excutor(resolve, reject)
+
+      Promise.prototype.then = function (onFulfilled, onRejected) {
+        if (this.status === PENDDING) {
+          this.callbacks.push({
+            onFulfilled,
+            onRejected
+          })
+        } else if (this.status === FULFILLED) {
+          setTimeout(() => {
+            onFulfilled(this.value)
+          })
+        } else if (this.status === REJECTED) {
+          setTimeout(() => {
+            onRejected(this.value)
+          })
+        }
+      }
+
+    }
+
+    window.Promise = Promise
+  })(window)
+
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(111)
+    }, 1000)
+  }).then(value => {
+    console.log('fulfilled:' + value)
+  }, reason => {
+    console.log('resolved:' + reason)
+  })
+</script>
+
+</html>

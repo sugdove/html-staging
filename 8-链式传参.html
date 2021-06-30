@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  let add = (...args) => {
+    let num = 0
+
+    function Fn(...args2) {
+      if (args2.length === 0) {
+        return num
+      } else {
+        num += args2.reduce((pre, total) => {
+          return pre + total
+        })
+        return Fn
+      }
+    }
+    if (args.length === 0) {
+      return num
+    } else {
+      num = args.reduce((pre, total) => {
+        return pre + total
+      })
+      return Fn
+    }
+  }
+  let a = add(1)(2)(3)(4)
+  let b = a(5)(6)
+  let c = b(7)()
+  console.log(c)
+</script>
+
+</html>

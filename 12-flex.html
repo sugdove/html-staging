@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="flex_content">
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+</body>
+<style>
+  body {
+    background: #eee;
+  }
+
+  .flex_content {
+    width: 108px;
+    height: 108px;
+    background: white;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+  }
+
+  .item {
+    width: 24px;
+    height: 24px;
+    margin: 2px;
+    background: black;
+    border-radius: 30px;
+  }
+  .item:nth-of-type(2) {
+    align-self: flex-end;
+  }
+</style>
+
+</html>
