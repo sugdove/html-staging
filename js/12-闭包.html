@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="number" id="input">
+  <button id="button1" >-</button>
+  <button id="button2" onclick="changeNumber">+</button>
+  <p>
+    闭包:
+    what:
+      能够读取其他函数内部变量的函数, 在javascript中只有函数内部的子函数才能读取局部变量, 所以闭包
+      可以理解为“定义在一个函数内部的函数”, 闭包是将函数内部和函数外部连接起来的桥梁
+    why:
+    how
+  </p>
+</body>
+<script>
+  function changeNumber(){
+    let number = 0
+     return function(){
+      number+=1
+      document.querySelector('#input').value = number
+      console.log(number)
+    }
+  } 
+
+  document.querySelector('#button1').onclick = changeNumber('+')
+  document.querySelector('#button2').onclick = changeNumber('-')
+</script>
+</html>

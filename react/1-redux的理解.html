@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>  
+  <p>
+    redux
+    1.what
+      redux 是前端项目全局状态的一个方案 . 
+      当有出现:
+      (1)所有组件都需要共享的state信息例如:用户信息
+      (2)组件嵌套极深且需要祖宗组件的state
+      等情况时, 可以使用redux全局状态管理方案
+    2.why
+      1.相比于其他全局状态管理方案 mobx 和 hooks 等 , redux 在大型项目项目表现的更加优秀和稳定
+    3.how
+      redux总体分为三个部分: action store reducer,用户dispatch一个action, action为对象分别type 和 state,
+      当dispatch给store之后 store将此次action分发给reducer进行处理并且传入prestate和action, 其中如果prestate没有
+      会默认给个undefined,reducer根据type的不同对prestate进行操作, return的数据将保存在store.通过store.getState()获取
+  </p>
+</body>
+</html>
