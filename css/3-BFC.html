@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="test"></div>
+  </div>
+  <div class="container">
+
+    <div class="test"></div>
+  </div>
+  
+  <p>
+    BFC: 块级格式化上下文,为独立的渲染区域,有自己的渲染规则并且不会影响外界的CSS属性
+        触发:  
+              1.根元素
+              2.float
+              3.position: fixed absolute 绝对定位
+              4.overflow不为visible
+        现象: 
+              1.避免外边距重叠现象: 外边距会重叠
+              2.清除浮动: 父元素中的子元素设置浮动, 子元素脱离了文档流, 父元素就不能包裹住子元素
+              3.防止浮动元素覆盖正常元素: 给正常元素设置BFC
+  </p>
+</body>
+<style>
+  .container{
+    overflow: hidden;
+  }
+  .test {
+    width: 300px;
+    height: 300px;
+    background: #999;
+    border: 1px #333 solid;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    margin: 100px
+  }
+</style>
+</html>

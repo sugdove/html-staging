@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="box" ondrop="drop(event)" ondragover="dragOver(event)">
+    <img src="https://img1.baidu.com/it/u=2352690892,4245754153&fm=26&fmt=auto&gp=0.jpg" alt="panda" draggable="true"
+      ondragstart="dragStart(event)" class='img'>
+  </div>
+  <div class="box" ondrop="drop(event)" ondragover="dragOver(event)"></div>
+</body>
+<script>
+  function dragStart(e) {
+    e.dataTransfer.setData('dom', e.target.className)
+  }
+
+  function dragOver(e) {
+    e.preventDefault();
+  }
+
+  function drop(e) {
+    e.target.appendChild(document.getElementsByClassName(e.dataTransfer.getData('dom'))[0])
+  }
+</script>
+<style>
+  .box {
+    width: 500px;
+    height: 500px;
+    border: 1px #333 solid;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    margin: 100px;
+    float: left;
+  }
+</style>
+
+</html>

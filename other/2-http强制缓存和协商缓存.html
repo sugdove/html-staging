@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    强制缓存:
+      what: 浏览器强制获得缓存资源
+      why: 对于一些不经常改变的静态资源, 例如图片固定的坐标json文件等等设置强制缓存, 提高用户体验, 同时降低服务器压力
+      how: 1.Expire: new Date('2021-7-1 10:46:15').toUTCString() 设置绝对的过期时间, 在此时间之前对该资源强制缓存
+           Expire弊端: 客户端和服务器时间可能不同步, 绝对过期时间是依据的服务器时间, 可能会造成精度问题
+           2.Cache-control: 'max-age: 3600' 设置具体时间一小时后过期 'no-chache': 使用协商缓存 'no-store':不缓存
+                            'private/public': 代理服务器是否可以缓存 'max-masage': 代理服务器过期时间
+    协商缓存:
+      what: 浏览器在请求缓存资源前会先对服务器进行交互, 如果服务器允许并放回304状态码, 则返回缓存资源, 否则会重新请求
+      why: 对于一些频繁改变的文件最好设置为协商缓存
+      how: 'last-modify':最后改变时间, 服务端通过判断时间是否相等返回304  弊端:只能通过时间判断, 文件内容改变不会生效
+           'Etag': 文件指纹, 通过判断指纹是否相等返回304  弊端: 通过文件内容生成指纹, 会对服务器性能造成负担, 特别是大
+           文件的指纹
+          
+  </p>
+</body>
+</html>

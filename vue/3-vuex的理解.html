@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <p>
+    vuex是vue官方推荐的vue全局状态管理方案:
+    由五个核心属性组成:
+    1.state 存储状态
+    2.getters 类似于computed 返回的值根据依赖的state的属性而改变
+    3.mutations 改变state 的唯一方式, 接收两个参数:state和传入的数据data, 同步进行
+    4.actions 用于提交mutations, 接收两个参数: context 和传入的数据data 异步进行
+    5.modules 用于进行store的模块划分
     
   </p>
 </body>
+
 </html>
