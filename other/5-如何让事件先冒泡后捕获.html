@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body id="body">
+  <div id='box' style="width: 100px; height: 100px; border: 1px #000 solid;"></div>
+</body>
+<script>
+  // 现代浏览器冒泡到window
+  box.onclick = function (e) {
+    console.log('box')
+  }
+  body.onclick = function () {
+    console.log('body')
+  }
+  document.onclick = function () {
+    console.log('document')
+  }
+  window.onclick = function () {
+    console.log('window')
+  }
+  // true为捕获阶段
+  box.addEventListener(
+    'click',
+    () => {
+      console.log('box')
+    }, true
+  )
+  body.addEventListener(
+    'click',
+    () => {
+      console.log('body')
+    }, true
+  )
+  document.addEventListener(
+    'click',
+    () => {
+      console.log('document')
+    }, true
+  )
+  window.addEventListener(
+    'click',
+    () => {
+      console.log('window')
+    }, true
+  )
+ /* 1.先进行捕获(从外向内) 
+  * 2.到目标阶段
+  * 2.再进行冒泡(从内向外)
+  */
+</script>
+
+</html>
