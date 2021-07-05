@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <button onclick="sendRequest()">点击发送请求</button>
+  <button onclick="cancalRequest()">点击取消请求</button>
+  <div class="box">
+
+  </div>
+</body>
+<script>
+  let xhr = null
+
+  function sendRequest() {
+
+    const box = document.getElementsByClassName('box')[0]
+
+    xhr = new XMLHttpRequest()
+
+    xhr.open('post', 'http://192.168.24.209:8080/post')
+
+    // 设置请求头默认json
+
+    // xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+
+    // 第二种方式设置返回结果
+    xhr.responseType = 'json'
+
+    // 设置超时时间两秒
+    
+    xhr.timeout = 2000
+
+    // 超时回调
+
+    xhr.ontimeout = function(){
+      alert('超时')
+    }
+
+    // 网络异常的回调
+
+    xhr.onerror = function(){
+      alert('网络异常')
+    }
+    const obj = {
+      name: 11,
+      age: 222
+    }
+
+    xhr.send(JSON.stringify(obj))
+
+    xhr.onreadystatechange = function () {
+
+      if (xhr.readyState === 4) {
+
+        if (xhr.status >= 200 && xhr.status < 300) {
+
+          box.innerHTML = xhr.response.message
+
+        }
+      }
+    }
+  }
+  
+  function cancalRequest() {
+
+    xhr.abort()
+    
+  }
+</script>
+<style>
+  .box {
+    width: 300px;
+    height: 300px;
+    border: 1px #000 solid;
+  }
+</style>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+
+  </div>
+  <p>
+    指服务端和客户端必须在相同协议、域名、端口下进行交互的浏览器安全策略, 
+    解决方案1、jsonp 2、proxy代理 3、后台设置请求头 'Access-Control-Allow-Oringin': '*' cros
+    1.jsonp：借助浏览器本身的可以跨域的标签img、script、src等进行跨域
+  </p>  
+</body>
+<script>
+  function handle(obj){
+
+    const box = document.getElementsByClassName('box')[0]
+
+    box.innerHTML = obj.message
+
+  }
+</script>
+<script src="http://192.168.24.209:8080/jsonp"></script>
+<style>
+  .box {
+    width: 300px;
+    height: 300px;
+    border: 1px #000 solid;
+  }
+</style>
+</html>

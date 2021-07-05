@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <button onclick="sendRequest()">点击发送请求</button>
+  <div class="box">
+
+  </div>
+</body>
+<script>
+  let xhr = null
+
+  function sendRequest() {
+
+    const box = document.getElementsByClassName('box')[0]
+
+    fetch('http://192.168.24.209:8080/post',{
+
+      method:'post',
+      
+      body:{ name: 11, age: 222 }
+
+    }).then(res => {
+
+      return res.json()
+
+    }).then(res => {
+      // 此处 res才是真正的结果
+      box.innerHTML = res.message
+
+    })
+
+  }
+</script>
+<style>
+  .box {
+    width: 300px;
+    height: 300px;
+    border: 1px #000 solid;
+  }
+</style>
+
+</html>
