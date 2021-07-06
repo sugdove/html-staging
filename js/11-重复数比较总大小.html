@@ -17,24 +17,34 @@
   */
   function getResult(arr) {
     let obj = {}
-    let numArr = []
-    let num = 0
-    for (let i = 0; i <= arr.length; i++) {
-      if (obj[arr[i]] !== undefined || arr.length === i) {
-        numArr.push(num)
-        obj = {}
-        num = 0
-        obj[arr[i]] = arr[i]
-        num += arr[i]
-      } else if (arr.length !== i) {
-        obj[arr[i]] = arr[i]
-        num += arr[i]
+    let total = 0
+    let totalArr = []
+    for (let i = 0; i < arr.length; i++) {
+      if (i !== arr.length - 1) {
+        if (obj[arr[i]] === undefined) {
+          obj[arr[i]] = 1
+          total += arr[i]
+        } else {
+          totalArr.push(total)
+          total = arr[i]
+          obj = {}
+          obj[arr[i]] = 1
+        }
+      } else {
+        if (obj[arr[i]] === undefined) {
+          total += arr[i]
+          totalArr.push(total)
+        } else {
+          totalArr.push(total)
+          totalArr.push(arr[i])
+        }
       }
 
     }
-    console.log(numArr)
+
+    return Math.max.apply(null, totalArr)
   }
-  getResult([1, 2, 2, 3, 4, 5, 5, 5, 5, 5])
+  console.log(getResult([1, 2, 2, 3, 4, 5, 5, 5, 5, 5]))
 </script>
 
 </html>
