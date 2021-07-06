@@ -26,7 +26,9 @@
         this.status = FULFILLED
         this.value = value
         this.callbacks.forEach(item => {
-          item.onFulfilled(value)
+          setTimeout(() => {
+            item.onFulfilled(value)
+          })
         })
       }
 

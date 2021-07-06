@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function Person(name, age) {
+    this.name = name
+    this.age = age
+  }
+
+  Person.prototype.sayName = function(){
+    console.log('Hi '+ this.name)
+  }
+
+  function Teacher(name, age){
+    // 构造函数继承
+    Person.call(this, name, age)
+  }
+  
+  // 原型链继承
+  Teacher.prototype = new Person()
+
+  //  寄生组合继承
+  {
+
+    function Fn(){}
+
+    Fn.prototype = Person.prototype
+
+    Teacher.prototype = new Fn()
+
+    Teacher.prototype.constructor = Teacher
+
+  }
+  
+
+</script>
+</html>

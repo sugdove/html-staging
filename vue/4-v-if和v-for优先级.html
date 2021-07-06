@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    v-for的优先级更高于V-if
+    判断原因:
+    (1)在同一个dom节点书写v-for v-if v-if根据数组的某个属性进行渲染判断, 那么页面的生成逻辑是, 为true的渲染 为false不渲染, 显然是先v-for再v-if 
+    (2)源码层级上看v-for在 else-if 嵌套的上一级
+  </p>
+</body>
+</html>

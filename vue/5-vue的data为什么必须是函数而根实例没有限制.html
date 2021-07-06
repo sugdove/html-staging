@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    <p>
+      vue的data为什么必须是函数而根实例没有限制:
+      1. 不可行 , 源码有判断如果是组件之中data必须是函数形式, 为了防止在多实例的情况下data数据的污染
+      2. 只有根实例data可为对象, 因为不需要, 此vue是单例的
+    </p>
+    <comp></comp>
+  </div>
+</body>
+<script src="../node_modules/_vue@2.6.14@vue/dist/vue.min.js"></script>
+<script>
+  Vue.component('comp',{
+    template:`<div @click="counter++">{{ counter }}</div>`,
+    // 不可行 , 源码有判断如果是组件之中data必须是函数形式, 为了防止在多实例的情况下data数据的污染
+    // data:{
+    //   counter: 1
+    // }
+    data(){
+      return {
+        counter: 1
+      }
+    }
+  })
+  const app = new Vue({
+    el: '#app'
+  })
+  
+</script>
+</html>
