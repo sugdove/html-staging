@@ -21,20 +21,19 @@
     return new Promise((resolve, reject) => {
       var img = new Image()
       img.src = imgSrc
-      document.body.appendChild(img)
       img.onload = function () {
         resolve(img)
       }
       img.onerror = function () {
-        reject(img)
+        reject('图片加载失败')
         // 
       }
     })
   }
-  getImg(rightImg).then(res => {
-    console.log(res)
+  getImg(rightImg).then(img => {
+    document.body.appendChild(img)
   }).catch(err => {
-    console.log(err)
+    alert(err)
   })
 </script>
 
