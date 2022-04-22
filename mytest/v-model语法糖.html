@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="input">
+    <button @click="change">cc</button>
+    <my-input v-model="myInput"></my-input>
+  </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+  Vue.component('my-input', {
+    template: `
+    <input
+    :value="value"
+    @input="$emit('input', $event.target.value)"
+    >
+    </input>
+    `,
+    props: ['value']
+  })
+  const app = new Vue({
+    el: '#app',
+    data: {
+      input: '',
+      myInput: ''
+    },
+    methods: {
+      change () {
+        this.input = 'cc'
+        this.myInput = 'cc'
+      }
+    }
+  })
+
+</script>
+
+</html>

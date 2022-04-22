@@ -11,7 +11,7 @@
 <body>
   <input type="number" id="input">
   <button id="button1">-</button>
-  <button id="button2" onclick="changeNumber">+</button>
+  <button id="button2">+</button>
   <p>
     闭包:
     what:
@@ -25,17 +25,17 @@
   </p>
 </body>
 <script>
-  function changeNumber() {
+  function changeNumber (str) {
     let number = 0
     return function () {
-      number += 1
+      eval(`number ${str}= 1`)
       document.querySelector('#input').value = number
       console.log(number)
     }
   }
 
-  document.querySelector('#button1').onclick = changeNumber('+')
-  document.querySelector('#button2').onclick = changeNumber('-')
+  document.querySelector('#button1').onclick = changeNumber('-')
+  document.querySelector('#button2').onclick = changeNumber('+')
 </script>
 
 </html>
