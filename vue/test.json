@@ -3,78 +3,250 @@
   "errCode": "000000",
   "message": null,
   "data": {
-    "patientAge": 76,
-    "gender": "男",
-    "babyBronDays": 0,
-    "babyBronWeight": null,
-    "babyWeightAtCheckIn": null,
-    "hospitalizedDay": 6,
-    "totalCost": 5340.31,
-    "checkOutType": 1,
-    "ventilatorUseTime": null,
-    "mainDiseaseCode": "J44.000",
-    "mainDiseaseName": "慢性阻塞性肺病伴有急性下呼吸道感染",
-    "otherDiseaseCodeList": [
-      {
-        "code": "R91.x00",
-        "name": "肺诊断性影像检查的异常所见",
-        "version": "CODE_GUOJIA_LC_ICD10_20",
-        "ccType": null
+    "patientInfo": {
+      "fee": 5340.31,
+      "hospitalDays": 6,
+      "feeRatio": null,
+      "ylfkfs": null,
+      "bryblx": null,
+      "bah": "202203061",
+      "relationField": "202203061"
+    },
+    "drgPrediction": {
+      "groupType": "DRG_POINT",
+      "drgCodeWrapperDTO": {
+        "reason": null,
+        "showAtPageDiseaseCodeType": "GUOJIA_LC_ICD10_2.0",
+        "showAtPageSurgeryCodeType": "GUOJIA_LC_ICD9_CM3_2.0",
+        "drgChannel": "CHS",
+        "saved": false,
+        "benchmarkWeight": 0.00,
+        "benchmarkCost": null,
+        "costQuota": null,
+        "benchmarkDays": 0.00,
+        "hospitalizeDaysQuota": -6.00,
+        "costStruct": [
+          [
+            {
+              "name": "管理费用",
+              "value": 479.50,
+              "type": "bah"
+            },
+            {
+              "name": "管理费用",
+              "value": 0.00,
+              "type": "hospital"
+            },
+            {
+              "name": "管理费用",
+              "value": 0.00,
+              "type": "city"
+            }
+          ],
+          [
+            {
+              "name": "医疗费用",
+              "value": 706.40,
+              "type": "bah"
+            },
+            {
+              "name": "医疗费用",
+              "value": 0.00,
+              "type": "hospital"
+            },
+            {
+              "name": "医疗费用",
+              "value": 0.00,
+              "type": "city"
+            }
+          ],
+          [
+            {
+              "name": "护理费",
+              "value": 39.00,
+              "type": "bah"
+            },
+            {
+              "name": "护理费",
+              "value": 0.00,
+              "type": "hospital"
+            },
+            {
+              "name": "护理费",
+              "value": 0.00,
+              "type": "city"
+            }
+          ],
+          [
+            {
+              "name": "医技费用",
+              "value": 2661.50,
+              "type": "bah"
+            },
+            {
+              "name": "医技费用",
+              "value": 0.00,
+              "type": "hospital"
+            },
+            {
+              "name": "医技费用",
+              "value": 0.00,
+              "type": "city"
+            }
+          ],
+          [
+            {
+              "name": "药品费用",
+              "value": 1181.51,
+              "type": "bah"
+            },
+            {
+              "name": "药品费用",
+              "value": 0.00,
+              "type": "hospital"
+            },
+            {
+              "name": "药品费用",
+              "value": 0.00,
+              "type": "city"
+            }
+          ],
+          [
+            {
+              "name": "血费",
+              "value": 0.00,
+              "type": "bah"
+            },
+            {
+              "name": "血费",
+              "value": 0.00,
+              "type": "hospital"
+            },
+            {
+              "name": "血费",
+              "value": 0.00,
+              "type": "city"
+            }
+          ],
+          [
+            {
+              "name": "耗材费用",
+              "value": 79.80,
+              "type": "bah"
+            },
+            {
+              "name": "耗材费用",
+              "value": 0.00,
+              "type": "hospital"
+            },
+            {
+              "name": "耗材费用",
+              "value": 0.00,
+              "type": "city"
+            }
+          ],
+          [
+            {
+              "name": "其他费用",
+              "value": 0.00,
+              "type": "bah"
+            },
+            {
+              "name": "其他费用",
+              "value": 0.00,
+              "type": "hospital"
+            },
+            {
+              "name": "其他费用",
+              "value": 0.00,
+              "type": "city"
+            }
+          ]
+        ],
+        "mainDiseaseCode": "J44.000",
+        "mainDiseaseName": "慢性阻塞性肺病伴有急性下呼吸道感染",
+        "mainSurgeryCode": "17.9500x005",
+        "mainSurgeryName": "穴位贴敷治疗",
+        "otherDiseaseCodeList": [
+          {
+            "code": "R91.x00",
+            "value": "肺诊断性影像检查的异常所见",
+            "targetCode": "R91.x00"
+          },
+          {
+            "code": "I27.900",
+            "value": "肺源性心脏病",
+            "targetCode": "I27.900",
+            "ccType": "MCC"
+          },
+          {
+            "code": "I48.x00x008",
+            "value": "慢性心房颤动",
+            "targetCode": "I48.x00x008"
+          },
+          {
+            "code": "I50.905",
+            "value": "心功能Ⅳ级",
+            "targetCode": "I50.905"
+          },
+          {
+            "code": "J96.900",
+            "value": "呼吸衰竭",
+            "targetCode": "J96.900",
+            "ccType": "MCC"
+          }
+        ],
+        "surgeryCodeList": [
+          {
+            "code": "17.9500x005",
+            "value": "穴位贴敷治疗"
+          },
+          {
+            "code": "17.9500x005",
+            "value": "穴位贴敷治疗"
+          },
+          {
+            "code": "17.9500x005",
+            "value": "穴位贴敷治疗"
+          },
+          {
+            "code": "17.9500x005",
+            "value": "穴位贴敷治疗"
+          }
+        ],
+        "costConsumptionIndexForCity": null,
+        "costConsumptionIndexForHospital": null,
+        "timeConsumptionIndexForCity": null,
+        "timeConsumptionIndexForHospital": null,
+        "costDistributedConsumptionIndexForCity": [],
+        "costDistributedConsumptionIndexForHospital": [],
+        "timeDistributedConsumptionIndexForCity": [],
+        "timeDistributedConsumptionIndexForHospital": [],
+        "hasDistribution": true,
+        "hasCostStruct": true,
+        "hospitalIndex": 2.0,
+        "baseScore": null,
+        "issues": [
+          "诊断编码 I48.x00x008/I50.905 不在分组器要求的编码版本内",
+          "手术及操作编码 17.9500x005/17.9500x005/17.9500x005/17.9500x005 不在分组器要求的编码版本内",
+          "诊断编码 R91.x00肺诊断性影像检查的异常所见/J96.900未特指的呼吸衰竭 为统计码"
+        ],
+        "levelIfBasicDisease": null,
+        "ylfkfs": "",
+        "diagnoseCodeVersion": null,
+        "operationCodeVersion": null,
+        "amount": 5340.31,
+        "drgResultType": 1,
+        "drgGroup": null,
+        "operatorLogs": null,
+        "drg": "ET21",
+        "drgName": "慢性气道阻塞病，伴严重并发症或合并症",
+        "adrg": null,
+        "adrgList": null,
+        "similarCase": null
       },
-      {
-        "code": "I27.900",
-        "name": "肺源性心脏病",
-        "version": "CODE_GUOJIA_LC_ICD10_20",
-        "ccType": "MCC"
-      },
-      {
-        "code": "I48.x00x008",
-        "name": "慢性心房颤动",
-        "version": "CODE_GUOJIA_LC_ICD10_20",
-        "ccType": null
-      },
-      {
-        "code": "I50.905",
-        "name": "心功能Ⅳ级",
-        "version": "CODE_GUOJIA_LC_ICD10_20",
-        "ccType": null
-      },
-      {
-        "code": "J96.900",
-        "name": "呼吸衰竭",
-        "version": "CODE_GUOJIA_LC_ICD10_20",
-        "ccType": "MCC"
-      }
-    ],
-    "surgeryCodeList": [
-      {
-        "code": "17.9500x005",
-        "name": "穴位贴敷治疗",
-        "version": "CODE_GUOJIA_LC_ICD9_20",
-        "ccType": null
-      },
-      {
-        "code": "17.9500x005",
-        "name": "穴位贴敷治疗",
-        "version": "CODE_GUOJIA_LC_ICD9_20",
-        "ccType": null
-      },
-      {
-        "code": "17.9500x005",
-        "name": "穴位贴敷治疗",
-        "version": "CODE_GUOJIA_LC_ICD9_20",
-        "ccType": null
-      },
-      {
-        "code": "17.9500x005",
-        "name": "穴位贴敷治疗",
-        "version": "CODE_GUOJIA_LC_ICD9_20",
-        "ccType": null
-      }
-    ],
-    "hospitalId": null,
-    "saved": false,
-    "cysj": "2022-03-01",
-    "yb": "01"
+      "dipCodeWrapperDTO": null
+    },
+    "riskInfo": []
   }
 }
