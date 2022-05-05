@@ -1,0 +1,80 @@
+{
+  "success": true,
+  "errCode": "000000",
+  "message": null,
+  "data": {
+    "patientAge": 76,
+    "gender": "男",
+    "babyBronDays": 0,
+    "babyBronWeight": null,
+    "babyWeightAtCheckIn": null,
+    "hospitalizedDay": 6,
+    "totalCost": 5340.31,
+    "checkOutType": 1,
+    "ventilatorUseTime": null,
+    "mainDiseaseCode": "J44.000",
+    "mainDiseaseName": "慢性阻塞性肺病伴有急性下呼吸道感染",
+    "otherDiseaseCodeList": [
+      {
+        "code": "R91.x00",
+        "name": "肺诊断性影像检查的异常所见",
+        "version": "CODE_GUOJIA_LC_ICD10_20",
+        "ccType": null
+      },
+      {
+        "code": "I27.900",
+        "name": "肺源性心脏病",
+        "version": "CODE_GUOJIA_LC_ICD10_20",
+        "ccType": "MCC"
+      },
+      {
+        "code": "I48.x00x008",
+        "name": "慢性心房颤动",
+        "version": "CODE_GUOJIA_LC_ICD10_20",
+        "ccType": null
+      },
+      {
+        "code": "I50.905",
+        "name": "心功能Ⅳ级",
+        "version": "CODE_GUOJIA_LC_ICD10_20",
+        "ccType": null
+      },
+      {
+        "code": "J96.900",
+        "name": "呼吸衰竭",
+        "version": "CODE_GUOJIA_LC_ICD10_20",
+        "ccType": "MCC"
+      }
+    ],
+    "surgeryCodeList": [
+      {
+        "code": "17.9500x005",
+        "name": "穴位贴敷治疗",
+        "version": "CODE_GUOJIA_LC_ICD9_20",
+        "ccType": null
+      },
+      {
+        "code": "17.9500x005",
+        "name": "穴位贴敷治疗",
+        "version": "CODE_GUOJIA_LC_ICD9_20",
+        "ccType": null
+      },
+      {
+        "code": "17.9500x005",
+        "name": "穴位贴敷治疗",
+        "version": "CODE_GUOJIA_LC_ICD9_20",
+        "ccType": null
+      },
+      {
+        "code": "17.9500x005",
+        "name": "穴位贴敷治疗",
+        "version": "CODE_GUOJIA_LC_ICD9_20",
+        "ccType": null
+      }
+    ],
+    "hospitalId": null,
+    "saved": false,
+    "cysj": "2022-03-01",
+    "yb": "01"
+  }
+}
