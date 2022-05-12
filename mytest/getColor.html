@@ -13,34 +13,36 @@
 
   </div>
   <button>变换颜色</button>
+  <!-- 需求 如果间隔3000毫秒则回到初始颜色 -->
 </body>
 <script>
   const btn = document.getElementsByTagName('button')[0]
-  function getColor(delay) {
+
+  function getColor (delay) {
     let colorArr = ['red', 'yellow', 'blue']
-    let n = 0
-    let preTime = 0
-    return () => {
-      afterTime = Date.now()
-      if (afterTime - preTime > delay) {
+    let n = -1
+    let time = 0
+    return function () {
+      timeNow = Date.now()
+      if (timeNow - time > delay) {
         n = 0
-      } else {
-        n === 2 ? n = 0 : n += 1
       }
-      preTime = Date.now()
-      colorDiv.style.background = colorArr[n]
-      return colorArr[n]
+      else {
+        n = n === 2 ? 0 : n + 1
+      }
+      time = timeNow
+      document.querySelector('#colorDiv').style.background = colorArr[n]
     }
   }
 
   btn.onclick = getColor(3000)
-
 </script>
 <style>
-  #colorDiv{
+  #colorDiv {
     width: 200px;
     height: 200px;
     border: 1px solid #000
   }
 </style>
+
 </html>

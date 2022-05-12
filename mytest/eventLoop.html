@@ -17,7 +17,7 @@
     console.log('setTimeout')
   })
 
-  async function asy1() {
+  async function asy1 () {
     console.log('asy1 start')
     await a.then(res => {
       console.log(res)
@@ -39,20 +39,19 @@
   }).then(res => {
     console.log('promise then')
   })
-  
+
   console.log('script end')
- /*
-       script start
-       asy1 start
-       promise1
-       script end
-       asy1 await
-       promise other
-       promise then
-       asy1 then
-       asy1 end
-       setTimeout
-       */
+  /*
+        script start
+        asy1 start
+        promise1
+        script end
+        asy1 await
+        promise then
+        asy1 then
+        asy1 end
+        setTimeout
+        */
 </script>
 
 </html>
