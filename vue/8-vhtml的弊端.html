@@ -9,18 +9,17 @@
 </head>
 
 <body>
-  <p>给该数组dom集合给一个唯一标识, 方便vue的diff算法, 如果不加key, 重绘次数增多, 效率降低, 增加KEY 会避免已存在的dom重复渲染</p>
   <div id="app">
-    <ul>
-      <li v-for="(item, index) in item" :key="index">{{item}}</li>
-    </ul>
+    <input type="text" v-model="v">
+    <div v-html="v"></div>
   </div>
+
 </body>
 <script src="../node_modules/vue/dist/vue.min.js"></script>
 <script>
   const app = new Vue({
     el: '#app',
-    data: { item: [1, 2, 3, 4] }
+    data: { v: '' }
   })
 </script>
 
