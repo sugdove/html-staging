@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas" width="600" height="600"></canvas>
+  <div id="time"></div>
+</body>
+<script>
+  function setCanvas () {
+    // js
+    const canvas = document.getElementById('canvas')
+    const ctx = canvas.getContext('2d')
+    // 设置中心点，此时300，300变成了坐标的0，0
+    ctx.save()
+    ctx.clearRect(0, 0, 600, 600)
+    ctx.translate(300, 300)
+    ctx.save()
+    // 画圆线使用arc(中心点X,中心点Y,半径,起始角度,结束角度)
+    ctx.beginPath();
+    ctx.arc(0, 0, 100, 0, 2 * Math.PI)
+    // 执行画线段的操作stroke
+    ctx.stroke();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.arc(0, 0, 5, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.closePath();
+
+    // 获取当前 时，分，秒
+    const time = new Date();
+    let hour = time.getHours() % 12
+    let min = time.getMinutes()
+    let sec = time.getSeconds()
+
+    // 时针
+    ctx.beginPath();
+    const hourMath = (hour + min / 60) * (Math.PI * 2 / 12)
+    ctx.rotate(hourMath - Math.PI / 2);
+    ctx.moveTo(-10, 0);
+    ctx.lineTo(40, 0);
+    ctx.lineWidth = 10;
+    ctx.stroke();
+    ctx.closePath();
+    ctx.restore();
+    ctx.save()
+
+    // 分针
+    ctx.beginPath();
+    const minMath = (min + sec / 60) * (Math.PI * 2 / 60);
+    ctx.rotate(minMath - Math.PI / 2);
+    ctx.moveTo(-10, 0);
+    ctx.lineTo(60, 0);
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = 'blue';
+    ctx.stroke();
+    ctx.closePath();
+    ctx.restore();
+    ctx.save()
+
+    // 秒针
+    ctx.beginPath();
+    const secMath = sec * (Math.PI * 2 / 60);
+    ctx.rotate(secMath - Math.PI / 2);
+    ctx.moveTo(-10, 0);
+    ctx.lineTo(80, 0);
+    ctx.lineWidth = 2
+    ctx.strokeStyle = 'red';
+    ctx.stroke();
+    ctx.closePath();
+    ctx.restore();
+    ctx.save()
+    // 绘制刻度，也是跟绘制时分秒针一样，只不过刻度是死的
+    ctx.lineWidth = 1
+    for (let i = 0; i < 60; i++) {
+      ctx.rotate(2 * Math.PI / 60)
+      ctx.beginPath()
+      ctx.moveTo(90, 0)
+      ctx.lineTo(100, 0)
+      // ctx.strokeStyle = 'red'
+      ctx.stroke()
+      ctx.closePath()
+    }
+    ctx.restore()
+    ctx.save()
+    ctx.lineWidth = 5
+    for (let i = 0; i < 12; i++) {
+      ctx.rotate(2 * Math.PI / 12)
+      ctx.beginPath()
+      ctx.moveTo(85, 0)
+      ctx.lineTo(100, 0)
+      // ctx.strokeStyle = 'red'
+      ctx.stroke()
+      ctx.closePath()
+    }
+
+    ctx.restore()
+    ctx.restore()
+
+  }
+
+  function setTime () {
+    const time = new Date().toLocaleTimeString()
+    const timeDom = document.querySelector('#time')
+    timeDom.innerHTML = `当前时间为:  ${time}`
+  }
+
+  setInterval(() => {
+    setCanvas();
+    setTime();
+  }, 1000)
+
+
+
+
+</script>
+
+</html>

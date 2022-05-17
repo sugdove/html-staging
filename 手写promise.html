@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  const PENDDING = 'pendding'
+  const FULFILLED = 'fulfilled'
+  const REJECTED = 'rejected'
+  function Promise (callback) {
+    this.status = PENDDING
+    this.callbacks = []
+    this.value = undefined
+    this.reason = undefined
+    const resolve = (v) => {
+      if (this.status !== PENDDING) return
+      this.status = FULFILLED
+      this.value = v
+      // 执行器为异步则在此执行
+      setTimeout(() => {
+        this.callbacks.forEach(({ onFulfilled }) => {
+          onFulfilled(v)
+        })
+      }, 0)
+    }
+    const reject = (v) => {
+      if (this.status !== PENDDING) return
+      this.status = REJECTED
+      this.reason = v
+      setTimeout(() => {
+        this.callbacks.forEach(({ onRejected }) => {
+          onRejected(v)
+        })
+      }, 0)
+    }
+    // 注意点 执行器内代码可以为同步也可以为异步
+    callback(resolve, reject)
+    Promise.prototype.then = (onFulfilled, onRejected) => {
+      return new Promise((resolve, reject) => {
+        // 执行器为异步
+        if (this.status === PENDDING) {
+          this.callbacks.push({
+            onFulfilled,
+            onRejected,
+          })
+        } else if (this.status === FULFILLED) {
+          setTimeout(() => {
+            let result = onFulfilled(this.value)
+            resolve(result)
+          }, 0)
+        } else if (this.status === REJECTED) {
+          setTimeout(() => {
+            let result = onRejected(this.reason)
+            reject(result)
+          }, 0)
+        }
+      })
+    }
+    Promise.prototype.catch = (onRejected) => {
+      if (this.status === REJECTED) {
+        setTimeout(() => {
+          onRejected(this.reason)
+        }, 0)
+      } else if (this.status === PENDDING) {
+        this.callbacks.push({
+          onFulfilled: () => { },
+          onRejected,
+        })
+      }
+    }
+    Promise.resolve = (v) => {
+      return new Promise((resolve, reject) => {
+        resolve(v)
+      })
+    }
+    Promise.reject = (v) => {
+      return new Promise((resolve, reject) => {
+        reject(v)
+      })
+    }
+    const setArgtoPromise = (v) => {
+      return v instanceof Promise ? v : Promise.resolve(v)
+    }
+    Promise.prototype.all = (args) => {
+      return new Promise((resolve, reject) => {
+        const arr = []
+        args.forEach((arg, index) => {
+          setArgtoPromise(arg).then(
+            (res) => {
+              arr[index] = res
+              if (arr.length === args.length) resolve(arr)
+            },
+            (err) => {
+              reject(err)
+            }
+          )
+        })
+      })
+
+    }
+    Promise.prototype.race = function (args) {
+      return new Promise((resolve, reject) => {
+        args.forEach((el) => {
+          el.then((res) => {
+            resolve(res);
+          }).catch((err) => {
+            reject(err);
+          });
+        });
+      })
+    };
+  }
+  const p = new Promise((resolve, reject) => {
+    console.log('hello!')
+    setTimeout(() => {
+      // resolve(10)
+      reject(-10)
+    }, 0)
+  })
+  const c = Promise.reject(123)
+  c.catch((err) => {
+    console.log(err)
+  })
+  p.catch((err) => {
+    console.log(err)
+  })
+
+</script>
+
+</html>

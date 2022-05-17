@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text">
+  <p></p>
+  <button onclick="change(event)">222</button>
+</body>
+<script>
+  const data = {
+    param: ''
+  }
+  const input = document.querySelector('input');
+  const p = document.querySelector('p');
+  // 初始化值
+  p.innerHTML = data.param
+  input.value = data.param
+  // 视图改变数据
+  input.addEventListener('input', function (e) {
+    data.param = e.target.value;
+  })
+  // 数据改变视图
+  let temp = data.param
+  Object.defineProperty(data, 'param', {
+    get: () => {
+      return temp
+    },
+    set: (v) => {
+      p.innerHTML = v
+      input.value = v
+    }
+  })
+  function change (event) {
+    console.log(event)
+    data.param = '222'
+  }
+</script>
+
+</html>

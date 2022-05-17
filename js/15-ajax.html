@@ -19,13 +19,13 @@
 <script>
   let xhr = null
 
-  function sendRequest() {
+  function sendRequest () {
 
     const box = document.getElementsByClassName('box')[0]
 
     xhr = new XMLHttpRequest()
 
-    xhr.open('post', 'http://192.168.24.209:8080/post')
+    xhr.open('post', 'http://192.168.200.57:8080/post')
 
     // 设置请求头默认json
 
@@ -35,18 +35,18 @@
     xhr.responseType = 'json'
 
     // 设置超时时间两秒
-    
+
     xhr.timeout = 2000
 
     // 超时回调
 
-    xhr.ontimeout = function(){
+    xhr.ontimeout = function () {
       alert('超时')
     }
 
     // 网络异常的回调
 
-    xhr.onerror = function(){
+    xhr.onerror = function () {
       alert('网络异常')
     }
     const obj = {
@@ -68,11 +68,11 @@
       }
     }
   }
-  
-  function cancalRequest() {
+
+  function cancalRequest () {
 
     xhr.abort()
-    
+
   }
 </script>
 <style>

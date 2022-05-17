@@ -1,30 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+
 </body>
 <script>
   const p1 = Promise.resolve(1)
   const p2 = Promise.resolve(2)
   const p3 = Promise.resolve(3)
 
-  p1.then(res=>{
-    console.log(res)
-    return p2
-  }).then(res=>{
-    console.log(res)
-    return p3
-  }).then(res=>{
-    console.log(res)
-  })
-  
-  promise.all([p1,p2,p3]) // 全部成功后执行then 失败一个catch
-  promise.fetch([p1, p2, p3]) // 谁先执行完成返回谁不管reject或者resolve
+  // p1.then(res => {
+  //   console.log(res)
+  //   return p2
+  // }).then(res => {
+  //   console.log(res)
+  //   return p3
+  // }).then(res => {
+  //   console.log(res)
+  // })
+
+  // promise.all([p1, p2, p3]) // 全部成功后执行then 失败一个catch
+  // promise.fetch([p1, p2, p3]) // 谁先执行完成返回谁不管reject或者resolve
+  function test () {
+    Promise.all([p1, p2, p3]).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+  async function test2 () {
+    try {
+      const d = await Promise.all([p1, p2, p3])
+      console.log(d, 'd2')
+    }
+    catch (e) {
+      console.error(e)
+    }
+  }
+  // async function main () {
+  //   await test()
+  //   await test2()
+  //   console.log(1)
+
+  // }
+  // main()
+  setTimeout(() => {
+    console.log('set')
+  }, 0)
+  test()
+  test2()
+  console.log(1)
 </script>
+
 </html>

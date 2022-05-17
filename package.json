@@ -19,5 +19,8 @@
   "homepage": "https://github.com/sugdove/html-staging#readme",
   "devDependencies": {
     "express": "^4.17.1"
+  },
+  "dependencies": {
+    "vue": "^2.6.1"
   }
 }

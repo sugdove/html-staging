@@ -26,34 +26,34 @@
     console.log('window')
   }
   // true为捕获阶段
-  box.addEventListener(
-    'click',
-    () => {
-      console.log('box')
-    }, true
-  )
-  body.addEventListener(
-    'click',
-    () => {
-      console.log('body')
-    }, true
-  )
-  document.addEventListener(
-    'click',
-    () => {
-      console.log('document')
-    }, true
-  )
-  window.addEventListener(
-    'click',
-    () => {
-      console.log('window')
-    }, true
-  )
- /* 1.先进行捕获(从外向内) 
-  * 2.到目标阶段
-  * 2.再进行冒泡(从内向外)
-  */
+  // box.addEventListener(
+  //   'click',
+  //   () => {
+  //     console.log('box')
+  //   }, true
+  // )
+  // body.addEventListener(
+  //   'click',
+  //   () => {
+  //     console.log('body')
+  //   }, true
+  // )
+  // document.addEventListener(
+  //   'click',
+  //   () => {
+  //     console.log('document')
+  //   }, true
+  // )
+  // window.addEventListener(
+  //   'click',
+  //   () => {
+  //     console.log('window')
+  //   }, true
+  // )
+  /* 1.先进行捕获(从外向内)
+   * 2.到目标阶段
+   * 2.再进行冒泡(从内向外)
+   */
 </script>
 
 </html>

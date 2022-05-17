@@ -12,7 +12,7 @@
 
 </body>
 <script>
-  function newInstanceof(obj, type) {
+  function newInstanceof (obj, type) {
     let objProto = obj.__proto__
     while (objProto !== null) {
       if (objProto === type.prototype) {
@@ -23,21 +23,35 @@
     return false
   }
 
-  function flat(arr) {
+  // function flat(arr) {
+  //   const result = []
+  //   function pushFn(arr) {
+  //     for (let i = 0; i < arr.length; i++) {
+  //       if (!Array.isArray(arr[i])) {
+  //         result.push(arr[i])
+  //       } else {
+  //         pushFn(arr[i])
+  //       }
+  //     }
+  //   }
+  //   pushFn(arr)
+  //   return result
+  // }
+  function flat (arr) {
     const result = []
-    function pushFn(arr) {
+    function mes () {
       for (let i = 0; i < arr.length; i++) {
-        if (!Array.isArray(arr[i])) {
+        if (Array.isArray(arr[i])) {
+          mes(arr[i])
+        }
+        else {
           result.push(arr[i])
-        } else {
-          pushFn(arr[i])
         }
       }
     }
-    pushFn(arr)
+    mes(arr)
     return result
   }
-
 
   const testArr = [1, [2, 3, [4, 5, [6, 7, [8, 9, [10, 11]]]]]]
   console.log(flat(testArr))
