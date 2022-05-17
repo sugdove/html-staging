@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="textarea" id="t1" onkeyup="keyup(event)">
+  <button onclick="transfer_()">转换为_</button>
+  <input type="textarea" id="t2">
+</body>
+<script>
+  function transfer (str = 'saKuRa') {
+    return str.replace(/[A-Z]/g, function (match) {
+      return '_' + match
+    }).toLowerCase()
+  }
+  function transfer_ () {
+    const t1 = document.querySelector('#t1')
+    const t2 = document.querySelector('#t2')
+    t2.value = transfer(t1.value)
+  }
+  function keyup (e) {
+    if (e.keyCode !== 13) return
+    transfer_()
+  }
+</script>
+
+</html>
