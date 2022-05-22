@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body>
-   <p>
-     加载步骤:
-              1.DNS解析url获得服务器IP
-              2.发起TCP连接
-              3.发送HTTP请求
-              4.服务器相应HTTP请求返回报文
-              5.浏览器渲染页面:
-              (1)html节点渲染为Dom树
-              (2)css解析为Cssom树
-              (3)合并DOM和CSSOM形成渲染树
-              (4)渲染并绘制页面:
-                               1.回流: 当DOM元素发生宽高改变等几何属性改变的情况下就会触发浏览器的回流, 浏览器需要重新计算位置信息, 对整个页面进行回流
 
-                               2.重绘: 当DOM元素发生颜色改变等非几何属性改变的情况下会触发浏览器的重绘, 浏览器只需单个的重绘改改变dom的属性, 不需要考虑其他DOM元素
-                              
-                               优化: 尽量避免浏览器回流, 因为会对浏览器性能造成压力
-                                    1.避免使用table布局
-                                    2.动画效果尽量放在display属性为absolute和fixed的元素上
-                                    3.避免多重嵌套的内联属性
-                                    4.避免使用CSS表达式
-              
+<body>
+  <p>
+    加载步骤:
+    1.DNS解析url获得服务器IP
+    2.发起TCP连接
+    3.发送HTTP请求
+    4.服务器响应HTTP请求返回报文
+    5.浏览器渲染页面:
+    (1)html节点渲染为Dom树
+    (2)css解析为Cssom树
+    (3)合并DOM和CSSOM形成渲染树
+    (4)渲染并绘制页面:
+    1.回流: 当DOM元素发生宽高改变等几何属性改变的情况下就会触发浏览器的回流, 浏览器需要重新计算位置信息, 对整个页面进行回流
+
+    2.重绘: 当DOM元素发生颜色改变等非几何属性改变的情况下会触发浏览器的重绘, 浏览器只需单个的重绘改改变dom的属性, 不需要考虑其他DOM元素
+
+    优化: 尽量避免浏览器回流, 因为会对浏览器性能造成压力
+    1.避免使用table布局
+    2.动画效果尽量放在display属性为absolute和fixed的元素上
+    3.避免多重嵌套的内联属性
+    4.避免使用CSS表达式
+
 </body>
+
 </html>
