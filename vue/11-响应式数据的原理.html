@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  初始化data时, vue会递归遍历data, 用Obejct.defineProperty对每一个属性进行数据劫持, 当页面
+  取到对应值的时候会进行依赖收集（收集对应组件的watcher）, 如果相关属性发生变化就会通知相关
+  依赖进行更新操作
+</body>
+
+</html>

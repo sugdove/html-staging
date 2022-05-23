@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  使用函数劫持的方式, 重写了数组的方法
+  对data中的数组原型链重写, 指向了自己定义的数组方法, 当调用数组api时, 通知依赖进行更新,
+  如果数组中包含引用类型, 会再次监控
+</body>
+
+</html>

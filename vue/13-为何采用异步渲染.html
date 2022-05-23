@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  vue是组件级更新, 如果不采用异步渲染, 那么每更新一次数据都会渲染一次, 所以
+  vue会在本轮数据更新全部完成后再去进行异步更新视图。（过滤相同的watcher,放入一个回调队列, 再异步刷新（nextTick）)
+</body>
+
+</html>
