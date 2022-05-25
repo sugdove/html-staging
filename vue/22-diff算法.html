@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  同级比较所以是O(n), （原因前端很少跨级操作dom）
+  1.先同级比较，再比较子节点
+  2.再判断一方有子节点一方没有子节点的情况
+  3.比较都有子节点的情况（vue双端交叉对比, 头头对比，尾尾对比，新头旧尾，新尾旧头）
+  4.递归比较
+</body>
+
+</html>

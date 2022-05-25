@@ -9,7 +9,9 @@
 </head>
 
 <body>
-  用异步方法执行回调函数, promise、setTimeout、setInterval
+  nextTick的本质是用异步的方法执行传递的回调函数, nextTick函数传入的回调函数会被放入
+  一个异步队列进行执行, 函数内部会判断浏览器是否支持的一些微任务（Promise、MutationObserver）,
+  如果支持首先放入微任务执行, 其次放入宏任务（setImmediate、setTimeout）
 </body>
 
 </html>
