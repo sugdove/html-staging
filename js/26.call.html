@@ -18,6 +18,7 @@
     }
     obj.fn_ = this
     const r = obj.fn_(...args)
+    delete obj.fn_
     return r
   }
 </script>

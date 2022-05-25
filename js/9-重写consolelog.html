@@ -12,16 +12,20 @@
 
 </body>
 <script>
-  // console.log = (function (fn) {
-  //   return function (str) {
-  //     fn.call(console, '当前时间戳毫秒数:' + str)
-  //   }
-  // })(console.log)
+  // // console.log = (function (fn) {
+  // //   return function (str) {
+  // //     fn.call(console, '当前时间戳毫秒数:' + str)
+  // //   }
+  // // })(console.log)
+  // let console_ = console.log
+  // console.log = function (x) {
+  //   console_.call(this, `当前时间:${new Date().toLocaleString()} | ` + x)
+  // }
+  // console.log(222)]
   let console_ = console.log
-  console.log = function (x) {
-    console_.call(this, `当前时间:${new Date().toLocaleString()} | ` + x)
+  console.log = function (str) {
+    console_.call(this, `当前时间:${new Date().toLocaleString()}:` + str)
   }
-  console.log(222)
 </script>
 
 </html>

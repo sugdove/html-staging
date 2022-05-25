@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  HTTP定义:
+  超文本传输协议, 是一个在两点之间传输文字、图片、视频、音频的协议
+
+  HTTP的特点:
+  1.灵活可拓展：不仅能传输文字，还能传输图片、视频以及音频
+
+  2.可靠传输：依据TCP/IP进行传输
+
+  3.请求应答模式：一方发送消息，一方接受消息
+
+  4.无状态
+
+  HTTP的缺点：
+  1.无状态传输：无法缓存住上一次的信息
+
+  2.明文传输：协议里的报文都是未经过处理的明文信息传输
+
+  3.队头阻塞：当开启一个长链接时，TCP会请求过长而阻塞到其他请求
+
+  HTTP的状态码：
+  1.1XX：正在处理
+  2.2XX：成功
+  3.3XX：重定向
+  4.4XX：客户端错误
+  5.5XX：服务端错误
+
+  HTTP有哪些方法：
+  GET、POST、DELETE、PUT、OPTIONS、HEAD
+
+  GET和POST的区别：
+  1.GET请求有传输限制（url长度）、POST没有
+  2.GET请求直接拼接在URL上，对比POST请求没有这么安全，且也不能进行任意的转码（只能进行URL转码）
+  3.GET请求默认缓存数据, POST不会
+</body>
+
+</html>

@@ -12,67 +12,91 @@
 
 </body>
 <script>
-  (function (window) {
-    function Promise(excutor) {
-      const PENDDING = 'pendding'
-      const FULFILLED = 'fulfilled'
-      const REJECTED = 'rejected'
-      this.status = PENDDING
-      this.value = undefined
-      this.callbacks = []
-
-      resolve = (value) => {
-        if (this.status !== PENDDING) return
-        this.status = FULFILLED
-        this.value = value
-        this.callbacks.forEach(item => {
-          setTimeout(() => {
-            item.onFulfilled(value)
-          })
-        })
-      }
-
-      reject = (reason) => {
-        if (this.status !== PENDDING) return
-        this.status = REJECTED
-        this.value = reason
-        this.callbacks.forEach(item => {
-          item.onRejected(reason)
-        })
-      }
-
-      excutor(resolve, reject)
-
-      Promise.prototype.then = function (onFulfilled, onRejected) {
-        if (this.status === PENDDING) {
-          this.callbacks.push({
-            onFulfilled,
-            onRejected
-          })
-        } else if (this.status === FULFILLED) {
-          setTimeout(() => {
-            onFulfilled(this.value)
-          })
-        } else if (this.status === REJECTED) {
-          setTimeout(() => {
-            onRejected(this.value)
-          })
-        }
-      }
-
+  const PENDDING = 'pendding'
+  const FULFILLED = 'fulfilled'
+  const REJECTED = 'rejected'
+  function Promise (excutor) {
+    this.callbacks = [];
+    this.status = PENDDING;
+    this.success = null
+    this.error = null
+    const resolve = (v) => {
+      this.status = FULFILLED;
+      this.success = v
+      this.callbacks.forEach(({ onFulfilled, onRejected }) => {
+        onFulfilled(v)
+      })
     }
-
-    window.Promise = Promise
-  })(window)
-
-  new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(111)
-    }, 1000)
-  }).then(value => {
-    console.log('fulfilled:' + value)
-  }, reason => {
-    console.log('resolved:' + reason)
+    const reject = (v) => {
+      this.status = REJECTED;
+      this.error = v
+      this.callbacks.forEach(({ onFulfilled, onRejected }) => {
+        onRejected(v)
+      })
+    }
+    excutor(resolve, reject)
+  }
+  Promise.prototype.then = function (onFulfilled, onRejected) {
+    if (this.status === FULFILLED) {
+      setTimeout(() => {
+        onFulfilled(this.error)
+      })
+    }
+    else if (this.status === REJECTED) {
+      setTimeout(() => {
+        onRejected(this.success)
+      })
+    }
+    else if (this.status === PENDDING) {
+      this.callbacks.push({ onFulfilled, onRejected })
+    }
+  }
+  Promise.prototype.catch = function (onRejected) {
+    if (this.status === REJECTED) {
+      setTimeout(() => {
+        onRejected(this.error)
+      })
+    }
+    else if (this.status === PENDDING) {
+      this.callbacks.push({ onFulfilled: null, onRejected })
+    }
+  }
+  Promise.resolve = function (v) {
+    return new Promise((resolve, reject) => {
+      resolve(v)
+    })
+  }
+  Promise.reject = function (v) {
+    return new Promise((resolve, reject) => {
+      reject(v)
+    })
+  }
+  Promise.prototype.all = function (args) {
+    return new Promise((resolve, reject) => {
+      const cache = []
+      args.forEach(p => {
+        p.then(res => {
+          cache.push(res)
+          if (cache.length === args.length) resolve(cache)
+        }, err => {
+          reject(err)
+        })
+      })
+    })
+  }
+  Promise.prototype.race = function (args) {
+    return new Promise((resolve, reject) => {
+      args.forEach(p => {
+        p.then(res => {
+          resolve(res)
+        }, err => {
+          reject(err)
+        })
+      })
+    })
+  }
+  const p1 = new Promise((resolve, reject) => {
+    resolve(1)
   })
 </script>
 

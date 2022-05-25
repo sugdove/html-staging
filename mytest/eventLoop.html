@@ -13,7 +13,9 @@
   改任务就会被推入js的单线程执行栈，此过程叫做eventLoop 事件循环
 </body>
 <script>
-
+  // 同步: script start     asy1 start  promise1  script end
+  // 宏: setTimeout 
+  // 微: asy1 await promise then   asy1 then  asy1 end   
   setTimeout(() => {
     console.log('setTimeout')
   })

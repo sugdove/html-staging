@@ -18,7 +18,7 @@
   EventHub.prototype.on = function (key, callback) {
     this.callbacks[key] = { callback, type: 'on' };
   }
-  EventHub.prototype.$emit = function (key, data) {
+  EventHub.prototype.emit = function (key, data) {
     if (this.callbacks.hasOwnProperty(key)) {
       this.callbacks[key].callback(data)
       if (this.callbacks[key].type === 'once') {
@@ -37,8 +37,8 @@
     console.log(v)
   })
   e1.off('Hello')
-  e1.$emit('Hello', 'hello world!')
-  e1.$emit('Hello', 'hello world twice!')
+  e1.emit('Hello', 'hello world!')
+  e1.emit('Hello', 'hello world twice!')
 </script>
 
 </html>

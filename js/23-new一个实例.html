@@ -15,8 +15,8 @@
   function myNew (Fn, ...args) {
     const obj = {};
     obj.__proto__ = Fn.prototype;
-    Fn.call(obj, ...args);
-    return obj
+    const result = Fn.call(obj, ...args);
+    return result
   }
 </script>
 
