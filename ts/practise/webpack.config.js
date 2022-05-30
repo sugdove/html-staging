@@ -31,8 +31,8 @@ module.exports = {
                   {
                     // 要兼容的目标浏览器
                     targets: {
-                      chrome: '58',
-                      ie: '11',
+                      // chrome: '58',
+                      ie: '5',
                     },
                     // 指定corejs版本
                     corejs: '3',
