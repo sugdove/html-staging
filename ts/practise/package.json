@@ -5,15 +5,22 @@
   "main": "index.ts",
   "scripts": {
     "test": "test",
-    "build": "webpack"
+    "build": "webpack",
+    "start": "webpack server --open --port 9527"
   },
   "author": "suge",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "core-js": "^3.22.7",
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.3.0",
     "typescript": "^4.7.2",
     "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
   }
 }
