@@ -5,7 +5,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   entry: './index.ts',
-  mode: 'production',
+  mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -32,12 +32,12 @@ module.exports = {
                     // 要兼容的目标浏览器
                     targets: {
                       // chrome: '58',
-                      ie: '5',
+                      ie: '11',
                     },
                     // 指定corejs版本
                     corejs: '3',
                     // 使用corejs的方式 "usage" 表示按需加载
-                    // useBuiltIns: 'usage',
+                    useBuiltIns: 'usage',
                   },
                 ],
               ],
