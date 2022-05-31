@@ -1,0 +1,59 @@
+$bg-color:#b7d4a8;
+html,body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#box {
+  height: 420px;
+  width: 360px;
+  border: 10px #000000 solid;
+  border-radius: 10px;
+  background-color: $bg-color;
+  padding:15px;
+  .container {
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    .content {
+      width: 352px;
+      height: 352px;
+      border: 2px#000000 solid;
+      position: relative;
+      #snake {
+        & > div {
+          width:10px;
+          height:10px;
+          background-color:#000000;
+          margin:2px;
+          position: absolute
+        }
+      }
+      #food {
+          width:10px;
+          height:10px;
+          background-color:#000000;
+          margin:2px;
+          position: absolute;
+          left:40px;
+          top:100px
+      }
+    }
+    .footer {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      #score,#level{
+        font-size: 18px;
+        font-weight: bold;
+        font-family: "Courier";
+      }
+    }
+  }
+  
+}

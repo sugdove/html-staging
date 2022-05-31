@@ -3,14 +3,16 @@ const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 // 清除dist目录
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+//
 module.exports = {
-  entry: './index.ts',
+  entry: './src/index.ts',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     environment: {
       arrowFunction: false,
+      const: false,
     },
   },
   module: {
@@ -47,12 +49,39 @@ module.exports = {
         ], // ts-loader 将ts 转化为js babel-loader转换js版本
         exclude: /node_modules/,
       },
+      {
+        test: /\.s[ca]ss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    'postcss-preset-env',
+                    {
+                      browser: 'last 2 versions',
+                    },
+                  ],
+                ],
+              },
+            },
+          },
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [
     new HTMLWebpackPlugin({
       // title: '自定义title',
-      template: './index.html',
+      template: './src/index.html',
     }),
     new CleanWebpackPlugin(),
   ],
