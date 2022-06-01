@@ -34,113 +34,113 @@ export default class GameControl {
   }
   // 创建一个控制蛇移动的方法
   run(direction) {
-    // switch (direction) {
-    //   case 'ArrowUp':
-    //   case 'Up':
-    //     this.snake.Y -= 10
-    //     break;
-    //   case 'ArrowLeft':
-    //   case 'Left':
-    //     this.snake.X -= 10
-    //     break;
-    //   case 'ArrowDown':
-    //   case 'Down':
-    //     this.snake.Y += 10
-    //     break;
-    //   case 'ArrowRight':
-    //   case 'Right':
-    //     this.snake.X += 10
-    //     break;
-    // }
-    this.moveBody(direction)
+    switch (direction) {
+      case 'ArrowUp':
+      case 'Up':
+        this.snake.Y -= 10
+        break;
+      case 'ArrowLeft':
+      case 'Left':
+        this.snake.X -= 10
+        break;
+      case 'ArrowDown':
+      case 'Down':
+        this.snake.Y += 10
+        break;
+      case 'ArrowRight':
+      case 'Right':
+        this.snake.X += 10
+        break;
+    }
+    // this.moveBody(direction)
     this.eatFood()
     this.defeated()
   }
   // 蛇身体是如何移动的
-  moveBody(direction) {
-    let doms = document.getElementById('snake').children
-    // d = doms.length - 1; d >= 0; d--
-    for (let d = doms.length - 1; d >= 0; d--) {
-      let cdom = doms[d] as HTMLElement
-      const hdomx = this.snake.X
-      const hdomy = this.snake.Y
-      switch (direction) {
-        case 'ArrowUp':
-        case 'Up':
-          if (d === 0) {
-            this.snake.Y -= 10
-          }
-          else {
-            if (hdomx === cdom.offsetLeft) {
-              cdom.style.top = parseInt(cdom.style.top) - 10 + 'px'
-            }
-            else if (hdomx > cdom.offsetLeft) {
-              cdom.style.left = cdom.offsetLeft + 10 + 'px'
-            }
-            else if (hdomx < cdom.offsetLeft) {
-              cdom.style.left = cdom.offsetLeft - 10 + 'px'
-            }
-          }
-          break;
-        case 'ArrowLeft':
-        case 'Left':
-          if (d === 0) {
-            this.snake.X -= 10
-          }
-          else {
-            if (hdomy === cdom.offsetTop) {
-              cdom.style.left = parseInt(cdom.style.left) - 10 + 'px'
-            }
-            else if (hdomy > cdom.offsetTop) {
-              cdom.style.top = cdom.offsetTop + 10 + 'px'
-            }
-            else if (hdomy < cdom.offsetTop) {
-              cdom.style.top = cdom.offsetTop - 10 + 'px'
-            }
-          }
-          break;
-        case 'ArrowDown':
-        case 'Down':
-          if (d === 0) {
-            this.snake.Y += 10
-          }
-          else {
-            if (hdomx === cdom.offsetLeft) {
-              cdom.style.top = parseInt(cdom.style.top) + 10 + 'px'
-            }
-            else if (hdomx > cdom.offsetLeft) {
-              cdom.style.left = cdom.offsetLeft + 10 + 'px'
-            }
-            else if (hdomx < cdom.offsetLeft) {
-              cdom.style.left = cdom.offsetLeft - 10 + 'px'
-            }
-          }
-          break;
-        case 'ArrowRight':
-        case 'Right':
-          if (d === 0) {
-            this.snake.X += 10
-          }
-          else {
-            if (hdomy === cdom.offsetTop) {
-              cdom.style.left = parseInt(cdom.style.left) + 10 + 'px'
-            }
-            else if (hdomy > cdom.offsetTop) {
-              cdom.style.top = cdom.offsetTop + 10 + 'px'
-            }
-            else if (hdomy < cdom.offsetTop) {
-              cdom.style.top = cdom.offsetTop - 10 + 'px'
-            }
-          }
-          break;
-      }
-    }
-  }
+  // moveBody(direction) {
+  //   let doms = document.getElementById('snake').children
+  //   // d = doms.length - 1; d >= 0; d--
+  //   for (let d = doms.length - 1; d >= 0; d--) {
+  //     let cdom = doms[d] as HTMLElement
+  //     const hdomx = this.snake.X
+  //     const hdomy = this.snake.Y
+  //     switch (direction) {
+  //       case 'ArrowUp':
+  //       case 'Up':
+  //         if (d === 0) {
+  //           this.snake.Y -= 10
+  //         }
+  //         else {
+  //           if (hdomx === cdom.offsetLeft) {
+  //             cdom.style.top = parseInt(cdom.style.top) - 10 + 'px'
+  //           }
+  //           else if (hdomx > cdom.offsetLeft) {
+  //             cdom.style.left = cdom.offsetLeft + 10 + 'px'
+  //           }
+  //           else if (hdomx < cdom.offsetLeft) {
+  //             cdom.style.left = cdom.offsetLeft - 10 + 'px'
+  //           }
+  //         }
+  //         break;
+  //       case 'ArrowLeft':
+  //       case 'Left':
+  //         if (d === 0) {
+  //           this.snake.X -= 10
+  //         }
+  //         else {
+  //           if (hdomy === cdom.offsetTop) {
+  //             cdom.style.left = parseInt(cdom.style.left) - 10 + 'px'
+  //           }
+  //           else if (hdomy > cdom.offsetTop) {
+  //             cdom.style.top = cdom.offsetTop + 10 + 'px'
+  //           }
+  //           else if (hdomy < cdom.offsetTop) {
+  //             cdom.style.top = cdom.offsetTop - 10 + 'px'
+  //           }
+  //         }
+  //         break;
+  //       case 'ArrowDown':
+  //       case 'Down':
+  //         if (d === 0) {
+  //           this.snake.Y += 10
+  //         }
+  //         else {
+  //           if (hdomx === cdom.offsetLeft) {
+  //             cdom.style.top = parseInt(cdom.style.top) + 10 + 'px'
+  //           }
+  //           else if (hdomx > cdom.offsetLeft) {
+  //             cdom.style.left = cdom.offsetLeft + 10 + 'px'
+  //           }
+  //           else if (hdomx < cdom.offsetLeft) {
+  //             cdom.style.left = cdom.offsetLeft - 10 + 'px'
+  //           }
+  //         }
+  //         break;
+  //       case 'ArrowRight':
+  //       case 'Right':
+  //         if (d === 0) {
+  //           this.snake.X += 10
+  //         }
+  //         else {
+  //           if (hdomy === cdom.offsetTop) {
+  //             cdom.style.left = parseInt(cdom.style.left) + 10 + 'px'
+  //           }
+  //           else if (hdomy > cdom.offsetTop) {
+  //             cdom.style.top = cdom.offsetTop + 10 + 'px'
+  //           }
+  //           else if (hdomy < cdom.offsetTop) {
+  //             cdom.style.top = cdom.offsetTop - 10 + 'px'
+  //           }
+  //         }
+  //         break;
+  //     }
+  //   }
+  // }
   // 蛇吃到食物的逻辑
   eatFood() {
     if (this.snake.X === this.food.X && this.snake.Y === this.food.Y) {
       this.food.change();
-      this.snake.addBody(this.snake.lastX, this.snake.lastY);
+      // this.snake.addBody(this.snake.X, this.snake.Y);
       this.scorePanel.addScore()
     }
   }
