@@ -1,7 +1,7 @@
 // 记分牌
-class ScorePanel {
+export default class ScorePanel {
   private score: number = 0;
-  private level: number = 1;
+  level: number = 1;
   private maxLevel: number;
   private upScore: number;
   scoreEle: HTMLElement;
@@ -24,5 +24,9 @@ class ScorePanel {
       this.level++
       this.levelEle.innerHTML = 'LEVEL:' + String(this.level)
     }
+  }
+  init(): void {
+    this.score = 0
+    this.level = 1
   }
 }
