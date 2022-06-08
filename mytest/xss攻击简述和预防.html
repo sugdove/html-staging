@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  XSS攻击又叫跨站脚本攻击, 是一些恶意开发者利用页面漏洞或服务端漏洞将javascript恶意脚本插入到页面或者是服务端,
+  当用户访问时,恶意脚本执行, 进行一系列后续操作：
+  1.恶意跳转
+  2.网站挂马
+
+  1.非持久性： 利用v-html innterHtml input等一些标签的漏洞 将javascript代码插入页面
+  2.持久性：
+  解决方案：
+  1. 对输入数据进行转义
+  2. 尽量避免vhtml innerHtml 等类似操作
+  3. 浏览器自带防御 XSS-protection
+  4. 内容安全策略 CSP 白名单设置
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">btn</button>
+</body>
+<script>
+  // 回调函数的this 指向调用该函数的人
+  let obj = {
+    test () {
+      return () => {
+        console.log(this, 'this')
+      }
+    }
+  }
+  function test () {
+    return () => {
+      console.log(this, 'this')
+    }
+  }
+  obj.test()()
+  test()()
+  function throttle (callback, delay) {
+    let preTime = 0
+    return function (event) {
+      let timeNow = Date.now()
+      if (timeNow - preTime > delay) {
+        console.log(this, 'thisthis')
+        callback.call(this, event)
+        preTime = timeNow
+      }
+    }
+  }
+  btn.addEventListener('click', throttle(function () { console.log('点击成功') }, 1000))
+
+</script>
+
+</html>

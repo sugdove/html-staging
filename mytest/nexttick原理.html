@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  nextTick 出现的原因： vuejs 是异步渲染dom, vue会维护一个任务队列, 将相同的watcher过滤并放入这个队列之中,
+  最后再执行异步队列中的所有任务。所以就出现了nextTick为了保证当前页面视图渲染完毕,能获取更新后的DOM。
+
+  nextTick 如何实现： nextTick是一个函数, 传入一个回调函数作为他的参数, 本质上是将这个回调函数包裹成异步任务,
+  他会以promise -》 mutationObserver -》setImmediate -》setTimeout的顺序判断浏览器是否支持这些异步函数, 如果支持则将其包裹
+  为对应的异步任务
+
+
+</body>
+
+</html>
