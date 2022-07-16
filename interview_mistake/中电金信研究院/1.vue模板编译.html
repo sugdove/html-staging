@@ -1,0 +1,75 @@
+<div id="app">
+  <p>
+    {{ str }}
+  </p>
+  {{ str }}
+  <button @click="handleBtn">alert {{ str }}</button>
+  <button @click="handleChangeStr">change</button>
+</div>
+<!-- <script src="./vue.min.js"></script> -->
+<script>
+  class Vue {
+    constructor(options) {
+      this.$el = document.querySelector(options.el);
+      this.$data = options.data
+      this.methods = options.methods
+      this.compile(this.$el)
+      this.defineProperty(this.$data)
+    }
+
+    compile (node) {
+      console.log(node.childNodes, 'node.childNodes')
+      node.childNodes.forEach((item, index) => {
+        console.log(item.nodeType, 'item.nodeType')
+        // nodeType为3是文本节点
+        if (item.nodeType === 3) {
+          console.log(item.textContent, 'item.textContent')
+          // 替换{{}}以及其中的值
+          const reg = /\{\{(.*?)\}\}/g
+          item.textContent = item.textContent.replace(reg, (match, p1) => {
+            return this.$data[p1.trim()]
+          })
+        }
+        if (item.nodeType === 1) {
+          this.compile(item)
+          if (item.hasAttribute('@click')) {
+            const method = item.getAttribute('@click').trim()
+            if (this.methods.hasOwnProperty(method)) {
+              item.addEventListener('click', (event) => {
+                this.methods[method].bind(this, event)()
+              })
+            }
+          }
+        }
+      })
+    }
+
+    defineProperty (data) {
+      for (let key in data) {
+        Object.defineProperty(this, key, {
+          get () {
+            return data[key]
+          },
+          set (v) {
+            data[key] = v
+          }
+        })
+      }
+    }
+  }
+
+  new Vue({
+    el: "#app",
+    data: {
+      str: 'hello world'
+    },
+    methods: {
+      handleBtn (e) {
+        alert(this.str)
+      },
+      handleChangeStr (e) {
+        this.str = 'changed'
+      }
+    }
+  })
+</script>

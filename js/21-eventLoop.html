@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-    <p>
-      eventLoop 又叫js事件循环机制， 我个人的理解为 js按照 宏任务 -> 微任务 -> 宏任务 -> 微任务 的这种循环机制就叫eventLoop
-      
-      js为单线程语言, 只有一个call stack（调用栈）, 所有任务都是依次插入事件队列, 为了满足js更多的需求防止页面卡住等问题, 就
-      产生了回调函数、ajax、Prmomise 等异步方案。 浏览器任务分为宏任务以及微任务, 宏任务又分为run script 、 setTimout 、setInterval等等 
-    </p>
+  <p>
+    eventLoop 又叫js事件循环机制， 我个人的理解为 js按照 宏任务 -> 微任务 -> 宏任务 -> 微任务 的这种循环机制就叫eventLoop
+
+    js为单线程语言, 只有一个call stack（调用栈）, 所有任务都是依次插入事件队列, 为了满足js更多的需求防止页面卡住等问题, 就
+    产生了回调函数、ajax、Prmomise 等异步方案。 浏览器任务分为宏任务以及微任务, 宏任务又分为run script 、 setTimout 、setInterval等等
+  </p>
 </body>
+
 </html>

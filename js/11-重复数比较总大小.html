@@ -15,7 +15,7 @@
   /*
   一个数组[1,2,2,3,4,5]每一个沒有重复的数组为一个数组，比较总大小：[1,2],[2,3,4,5]所以大小为2+3+4+5 = 14，写出代码实现此功能
   */
-  function getResult(arr) {
+  function getResult (arr) {
     let obj = {}
     let total = 0
     let totalArr = []
@@ -44,7 +44,26 @@
 
     return Math.max.apply(null, totalArr)
   }
-  console.log(getResult([1, 2, 2, 3, 4, 5, 5, 5, 5, 5]))
+  function getResult2 (arr) {
+    let map = new Map()
+    let count = 0
+    let countArr = []
+    arr.forEach(item => {
+      if (!map.has(item)) {
+        count += item
+        map.set(item, item)
+      }
+      else {
+        countArr.push(count)
+        map.clear()
+        count = 0
+        count += item
+        map.set(item, item)
+      }
+    })
+    return Math.max.apply(null, countArr)
+  }
+  console.log(getResult2([1, 2, 2, 3, 4, 5, 5, 5, 5, 5]))
 </script>
 
 </html>
