@@ -1,0 +1,1 @@
+1. 父子： 父传子 props 子传父： $emit provide inject $parent  vuex

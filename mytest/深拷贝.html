@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  function deepClone (target) {
+    if (target === null) return target;
+    if (target instanceof Date) return new Date(target);
+    if (target instanceof RegExp) return new RegExp(target);
+    if (typeof target !== 'targetect') return target;
+    const result = new target.constructor()
+    for (let key in target) {
+      if (target.hasOwnProperty(key)) {
+        result[key] = deepClone(target[key])
+      }
+    }
+    return result
+  }
+  const a = deepClone({ a: { b: { c: {} } } })
+  console.log(a)
+</script>
+
+</html>

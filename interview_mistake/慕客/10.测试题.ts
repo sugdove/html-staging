@@ -6,7 +6,7 @@ interface Rectangle {
 }
 
 function computeBounds(rects: Array<Rectangle>): Rectangle {
-  let [min_x, min_y, max_width, max_height] = [0, 0, 0, 0]
+  let [min_x, min_y, max_width, max_height] = [rects[0].x, rects[0].y, 0, 0]
   for (let v of rects) {
     const { x, y, width, height } = v
     if (min_x > x) min_x = x
@@ -24,8 +24,8 @@ function computeBounds(rects: Array<Rectangle>): Rectangle {
 
 const rects: Array<Rectangle> = [
   {
-    x: 0,
-    y: 0,
+    x: 3,
+    y: 3,
     width: 5,
     height: 5,
   },
@@ -34,6 +34,12 @@ const rects: Array<Rectangle> = [
     y: 2,
     width: 10,
     height: 10
+  },
+  {
+    x: 0,
+    y: 0,
+    width: 8,
+    height: 8
   }
 ]
 
