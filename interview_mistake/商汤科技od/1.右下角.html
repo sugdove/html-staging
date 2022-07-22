@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="button">
+    <i></i>
+  </div>
+</body>
+<style>
+  .button {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+    cursor: pointer;
+    opacity: 0.5;
+    background: pink;
+    /* 1.rgba 2.图标大小定下 3.颜色对比 */
+  }
+
+  .button:hover {
+    background: lightgreen;
+  }
+
+  i {
+    opacity: 0;
+  }
+
+  /* 很多业务线: 自动驾驶, 主要toB , 技术栈 vue 一套 兴隆湖方便*/
+</style>
+
+</html>
