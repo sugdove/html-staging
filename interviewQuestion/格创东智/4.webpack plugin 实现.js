@@ -8,4 +8,4 @@ class MyPlugin {
   }
 }
 
-modulee.exports = MyPlugin
+module.exports = MyPlugin
