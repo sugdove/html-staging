@@ -15,18 +15,18 @@
   // 回调函数的this 指向调用该函数的人
   let obj = {
     test () {
-      return () => {
+      return function () {
         console.log(this, 'this')
       }
     }
   }
   function test () {
-    return () => {
+    return function () {
       console.log(this, 'this')
     }
   }
-  obj.test()()
-  test()()
+  obj.test()() // obj
+  test()() // window
   function throttle (callback, delay) {
     let preTime = 0
     return function (event) {

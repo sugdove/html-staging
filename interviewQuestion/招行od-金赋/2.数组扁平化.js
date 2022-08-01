@@ -1,17 +1,18 @@
 function flatten(arr) {
   return arr.flat(Infinity)
 }
-function pushFn(arr) {
+
+function flatten2(arr) {
   const result = []
-  for (let i = 0; i < arr.length; i++) {
-    if (!Array.isArray(arr[i])) {
-      result.push(arr[i])
-    } else {
-      pushFn(arr[i])
+  function pushFn(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      if (!Array.isArray(arr[i])) {
+        result.push(arr[i])
+      } else {
+        pushFn(arr[i])
+      }
     }
   }
-}
-function flatten2(arr) {
   pushFn(arr)
   return result
 }
