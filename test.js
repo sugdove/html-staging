@@ -7,15 +7,16 @@ let arr = [
   { id: 5, name: '部门5', pid: 4 },
 ]
 
-function toTree(arr, result, pid) {
+function toTree(arr, result = [], pid) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].pid === pid) {
-      const newObj = { ...arr[i], children: [] }
-      result.push(newObj)
-      toTree(arr, newObj.children, arr[i].id)
+      const obj = { ...arr[i], children: [] }
+      result.push(obj)
+      toTree(arr, obj.children, arr[i].id)
     }
   }
 }
-let result = []
+
+const result = []
 toTree(arr, result, 0)
 console.log(JSON.stringify(result))

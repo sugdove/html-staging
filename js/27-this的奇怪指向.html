@@ -15,13 +15,13 @@
   // 回调函数的this 指向调用该函数的人
   let obj = {
     test () {
-      return function () {
+      return () => {
         console.log(this, 'this')
       }
     }
   }
   function test () {
-    return function () {
+    return () => {
       console.log(this, 'this')
     }
   }
